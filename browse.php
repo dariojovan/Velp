@@ -80,13 +80,6 @@
     if ($result->num_rows > 0) {
         // output data of each row
         while($row = $result->fetch_assoc()) {
-//            while($g = $row["genres"]) {
-//
-//            }
-            $json = '';
-//            parse_str($row["genres"],$json);
-//            parse_str($tmp,$res);
-            $res = explode(',',$tmp);
             echo "title: " . $row["original_title"]. " - Genre: " . var_dump(json_decode($tmp,true))  . "<br>";
         }
     } else {
