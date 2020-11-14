@@ -74,7 +74,7 @@
     $tmp = '[{"id": 16, "name": "Animation"}, {"id": 35, "name": "Comedy"}, {"id": 10751, "name": "Family"}]';
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
-    $sql = "SELECT genres, original_title,poster_path FROM moviedb LIMIT 0,10";
+    $sql = "SELECT genres, original_title,poster_path FROM moviedb";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
@@ -100,7 +100,7 @@
                     <button class="btn btn2">Comment</button>';
                 echo "</div>";
             echo "</div>";
-
+            echo "<br><br><br>";
         }
     } else {
         echo "0 results";
