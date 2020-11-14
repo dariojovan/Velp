@@ -87,7 +87,7 @@
 //            parse_str($row["genres"],$json);
 //            parse_str($tmp,$res);
             $res = explode(',',$tmp);
-            echo "title: " . $row["original_title"]. " - Genre: " . var_dump(json_decode($tmp))  . "<br>";
+            echo "title: " . $row["original_title"]. " - Genre: " . var_dump(json_decode($tmp,true))  . "<br>";
         }
     } else {
         echo "0 results";
