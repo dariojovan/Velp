@@ -87,10 +87,20 @@
             }
             $genres = substr($genres,0,-2);
             $imgPath = "https://image.tmdb.org/t/p/w500" . $row["poster_path"];
-            echo "title: " . $row["original_title"]. " - Genre: " . $genres . "<br>";
-            echo "<div>";
-            echo '<img src="' . $imgPath . '" alt="picture 1" width="250px" height="300px">';
+            echo '<div class="box">';
+            echo '<div class="imgBox">';
+            echo '<img src=' . $imgPath . '" alt="picture 1" width="250px" height="300px">';
             echo "</div>";
+                echo '<div class="details">';
+                    echo '<div class="contents">';
+                        echo '<h2>' . $row["original_title"] . '</h2>';
+                        echo '<p>' . $genres . '</p>';
+                    echo "</div>";
+                    echo '<button class="btn btn1">Star</button>
+                    <button class="btn btn2">Comment</button>';
+                echo "</div>";
+            echo "</div>";
+
         }
     } else {
         echo "0 results";
