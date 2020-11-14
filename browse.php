@@ -74,7 +74,7 @@
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
-    $sql = "SELECT TOP 10 genres, original_title FROM moviedb";
+    $sql = "SELECT genres, original_title FROM moviedb";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
