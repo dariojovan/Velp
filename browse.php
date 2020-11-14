@@ -71,7 +71,7 @@
     $username = "root";
     $password = "";
     $dbname = "moviedb";
-    $tmp = "{{'id': 16, 'name': 'Animation'}, {'id': 35, 'name': 'Comedy'}, {'id': 10751, 'name': 'Family'}}";
+    $tmp = "[{'id': 16, 'name': 'Animation'}, {'id': 35, 'name': 'Comedy'}, {'id': 10751, 'name': 'Family'}]";
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
     $sql = "SELECT genres, original_title FROM moviedb LIMIT 0,10";
@@ -79,8 +79,9 @@
 
     if ($result->num_rows > 0) {
         // output data of each row
+        $res = json_decode($tmp,true);
         while($row = $result->fetch_assoc()) {
-            echo "title: " . $row["original_title"]. " - Genre: " . var_dump(json_decode($tmp,true))  . "<br>";
+            echo "title: " . $row["original_title"]. " - Genre: " . var_dump($res)  . "<br>";
         }
     } else {
         echo "0 results";
