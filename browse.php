@@ -71,7 +71,7 @@
     $username = "root";
     $password = "";
     $dbname = "moviedb";
-
+    $tmp = "[{'id': 16, 'name': 'Animation'}, {'id': 35, 'name': 'Comedy'}, {'id': 10751, 'name': 'Family'}]";
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
     $sql = "SELECT genres, original_title FROM moviedb LIMIT 0,10";
@@ -85,7 +85,7 @@
 //            }
             $json = '';
             parse_str($row["genres"],$json);
-            echo "title: " . $row["original_title"]. " - Genre: " . var_dump($json)  . "<br>";
+            echo "title: " . $row["original_title"]. " - Genre: " . var_dump(parse_str($tmp))  . "<br>";
         }
     } else {
         echo "0 results";
