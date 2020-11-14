@@ -76,7 +76,7 @@
     $tmp = '[{"id": 16, "name": "Animation"}, {"id": 35, "name": "Comedy"}, {"id": 10751, "name": "Family"}]';
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
-    $sql = "SELECT id, genres, original_title,poster_path FROM moviedb";
+    $sql = "SELECT id, genres, original_title FROM moviedb";
     $result = $conn->query($sql);
     $rowCount = 0;
     $curl = curl_init();
@@ -89,9 +89,6 @@
                 $genres .= $g["name"].", ";
             }
             $genres = substr($genres,0,-2);
-
-
-
 
             curl_setopt_array($curl, array(
                 CURLOPT_URL => $movieDbUrl . row["id"] . $token,
