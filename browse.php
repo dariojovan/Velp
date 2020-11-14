@@ -103,7 +103,7 @@
             $rowCount += 1;
             if ($rowCount > 3) {
                 $rowCount = 0;
-                echo "<br><br><br>";
+                //echo "<br><br><br>";
             }
 
         }
