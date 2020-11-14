@@ -81,7 +81,12 @@
         // output data of each row
         while($row = $result->fetch_assoc()) {
             $genre = json_decode(str_replace("'",'"',$row["genres"]),true);
-            echo "title: " . $row["original_title"]. " - Genre: " . var_dump($genre)  . "<br>";
+            $genres = '';
+            foreach ($genre as $g) {
+                $genres .= $g["name"].", ";
+            }
+            $genres = substr($genres,0,-2);
+            echo "title: " . $row["original_title"]. " - Genre: " . $genres  . "<br>";
         }
     } else {
         echo "0 results";
