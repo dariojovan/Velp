@@ -74,7 +74,7 @@
     $tmp = '[{"id": 16, "name": "Animation"}, {"id": 35, "name": "Comedy"}, {"id": 10751, "name": "Family"}]';
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
-    $sql = "SELECT genres, original_title,poster_path FROM moviedb";
+    $sql = "SELECT id, genres, original_title,poster_path FROM moviedb";
     $result = $conn->query($sql);
     $rowCount = 0;
     if ($result->num_rows > 0) {
@@ -93,7 +93,7 @@
             echo "</div>";
                 echo '<div class="details">';
                     echo '<div class="contents">';
-                        echo '<h2>' . $row["original_title"] . '</h2>';
+                        echo '<h2>' . $row["id"] . " - " . $row["original_title"] . '</h2>';
                         echo '<p>' . $genres . '</p>';
                     echo "</div>";
                     echo '<button class="btn btn1">Star</button>
