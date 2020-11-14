@@ -84,8 +84,9 @@
 //
 //            }
             $json = '';
-            parse_str($row["genres"],$json);
-            parse_str($tmp,$res);
+//            parse_str($row["genres"],$json);
+//            parse_str($tmp,$res);
+            $res = explode(',',$tmp);
             echo "title: " . $row["original_title"]. " - Genre: " . var_dump($res)  . "<br>";
         }
     } else {
