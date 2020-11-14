@@ -86,7 +86,7 @@
                 $genres .= $g["name"].", ";
             }
             $genres = substr($genres,0,-2);
-            $imgPath = "https://image.tmdb.org/t/p/w500/" . $row["poster_path"];
+            $imgPath = "https://image.tmdb.org/t/p/w500" . $row["poster_path"];
             echo "title: " . $row["original_title"]. " - Genre: " . $genres  . $imgPath . "<br>";
             echo "<div>";
             echo '<img src="$imgPath" alt="picture 1" width="250px" height="300px">';
