@@ -76,7 +76,7 @@
     $conn = new mysqli($servername, $username, $password, $dbname);
     $sql = "SELECT genres, original_title,poster_path FROM moviedb";
     $result = $conn->query($sql);
-
+    $rowCount = 0;
     if ($result->num_rows > 0) {
         // output data of each row
         while($row = $result->fetch_assoc()) {
@@ -100,7 +100,12 @@
                     <button class="btn btn2">Comment</button>';
                 echo "</div>";
             echo "</div>";
-            echo "<br><br><br>";
+            $rowCount += 1;
+            if ($rowCount > 3) {
+                $rowCount = 0;
+                echo "<br><br><br>";
+            }
+
         }
     } else {
         echo "0 results";
