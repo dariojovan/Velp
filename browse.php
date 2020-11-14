@@ -74,7 +74,7 @@
     $tmp = '[{"id": 16, "name": "Animation"}, {"id": 35, "name": "Comedy"}, {"id": 10751, "name": "Family"}]';
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
-    $sql = "SELECT genres, original_title FROM moviedb LIMIT 0,10";
+    $sql = "SELECT genres, original_title,poster_path FROM moviedb LIMIT 0,10";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
@@ -86,7 +86,10 @@
                 $genres .= $g["name"].", ";
             }
             $genres = substr($genres,0,-2);
-            echo "title: " . $row["original_title"]. " - Genre: " . $genres  . "<br>";
+            echo "title: " . $row["original_title"]. " - Genre: " . $genres  . $row["poster_path"] . "<br>";
+//            echo "<div>";
+//            echo '<img src="$imgPath" alt="picture 1" width="250px" height="300px">';
+//            echo "</div>";
         }
     } else {
         echo "0 results";
