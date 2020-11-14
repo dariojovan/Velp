@@ -86,10 +86,11 @@
                 $genres .= $g["name"].", ";
             }
             $genres = substr($genres,0,-2);
-            echo "title: " . $row["original_title"]. " - Genre: " . $genres  . $row["poster_path"] . "<br>";
-//            echo "<div>";
-//            echo '<img src="$imgPath" alt="picture 1" width="250px" height="300px">';
-//            echo "</div>";
+            $imgPath = "https://image.tmdb.org/t/p/w500/" . $row["poster_path"];
+            echo "title: " . $row["original_title"]. " - Genre: " . $genres  . $imgPath . "<br>";
+            echo "<div>";
+            echo '<img src="$imgPath" alt="picture 1" width="250px" height="300px">';
+            echo "</div>";
         }
     } else {
         echo "0 results";
