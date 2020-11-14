@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- some random comment -->
+
 <head>
 
     <meta charset="utf-8">
@@ -66,7 +66,27 @@
 </form>
 
 <div class="container">
+    <?php
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "moviedb";
 
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    $sql = "SELECT TOP 10 genres, original_title";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        // output data of each row
+        while($row = $result->fetch_assoc()) {
+            echo "title: " . $row["original_title"]. " - Genre: " . $row["genres"] . "<br>";
+        }
+    } else {
+        echo "0 results";
+    }
+    $conn->close();
+    ?>
     <div class="box">
         <div class="imgBox">
             <img src="img/browse1.jpg" alt="picture 1" width="250px" height="300px">
