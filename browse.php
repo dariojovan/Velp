@@ -74,13 +74,14 @@
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
-    $sql = "SELECT genres, original_title FROM moviedb";
+    $sql = "SELECT genres, original_title FROM moviedb LIMIT 0,10";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
         // output data of each row
         while($row = $result->fetch_assoc()) {
-            echo "title: " . $row["original_title"]. " - Genre: " . $row["genres"] . "<br>";
+            $json = $row["genres"];
+            echo "title: " . $row["original_title"]. " - Genre: " . var_dump($json)  . "<br>";
         }
     } else {
         echo "0 results";
