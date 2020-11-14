@@ -79,9 +79,9 @@
 
     if ($result->num_rows > 0) {
         // output data of each row
-        $res = json_decode($tmp,true);
         while($row = $result->fetch_assoc()) {
-            echo "title: " . $row["original_title"]. " - Genre: " . var_dump($res)  . "<br>";
+            $genre = json_decode(str_replace("'",'"',$row["genres"]),true);
+            echo "title: " . $row["original_title"]. " - Genre: " . var_dump($genre)  . "<br>";
         }
     } else {
         echo "0 results";
