@@ -67,6 +67,8 @@
 
 <div class="container">
     <?php
+    $movieDbUrl = "https://z4vrpkijmodhwsxzc.stoplight-proxy.io/3/movie/";
+    $token = "?api_key=3f36afe25dfd9dadde3e0c9bd458f64b";
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -86,7 +88,28 @@
                 $genres .= $g["name"].", ";
             }
             $genres = substr($genres,0,-2);
-            $imgPath = "https://image.tmdb.org/t/p/w500" . $row["poster_path"];
+
+
+            $curl = curl_init();
+
+            curl_setopt_array($curl, array(
+                CURLOPT_URL => $movieDbUrl . row["id"] . $token,
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_TIMEOUT => 30,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => "GET",
+                CURLOPT_HTTPHEADER => array(
+                    "cache-control: no-cache"
+                ),
+            ));
+
+            $response = curl_exec($curl);
+            $err = curl_error($curl);
+            $response = json_decode($response, true);
+            $imgPath = "https://image.tmdb.org/t/p/w500" . $response["poster_path"];
+            curl_close($curl);
+
+
             echo '<div class="box">';
             echo '<div class="imgBox">';
             echo '<img src="' . $imgPath . '" alt="picture 1" width="250px" height="300px">';
