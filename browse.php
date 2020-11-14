@@ -79,6 +79,7 @@
     $sql = "SELECT id, genres, original_title,poster_path FROM moviedb";
     $result = $conn->query($sql);
     $rowCount = 0;
+    $curl = curl_init();
     if ($result->num_rows > 0) {
         // output data of each row
         while($row = $result->fetch_assoc()) {
@@ -90,7 +91,7 @@
             $genres = substr($genres,0,-2);
 
 
-            $curl = curl_init();
+
 
             curl_setopt_array($curl, array(
                 CURLOPT_URL => $movieDbUrl . row["id"] . $token,
@@ -107,7 +108,6 @@
             $err = curl_error($curl);
             $response = json_decode($response, true);
             $imgPath = "https://image.tmdb.org/t/p/w500" . $response["poster_path"];
-            curl_close($curl);
 
 
             echo '<div class="box">';
@@ -130,6 +130,7 @@
             }
 
         }
+        curl_close($curl);
     } else {
         echo "0 results";
     }
