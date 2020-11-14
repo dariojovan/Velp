@@ -1,7 +1,3 @@
 <?php
-if (_iscurl()){
-    echo "this is enabled"; // will do an action
-}else{
-    echo "this is disabled"; // will do another action
-}
+echo 'Curl: ', function_exists('curl_version') ? 'Enabled' : 'Disabled';
 ?>
